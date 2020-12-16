@@ -77,7 +77,7 @@ load_songplays_table = LoadFactOperator(
     sql_stmt="test"
 )
 # [END howto_operator_bash_template]
-also_run_this  >> run_this_last
+also_run_this >> load_songplays_table >> run_this_last
 
 if __name__ == "__main__":
     dag.cli()
