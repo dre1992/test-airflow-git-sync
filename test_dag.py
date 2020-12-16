@@ -23,7 +23,7 @@ from datetime import timedelta
 from airflow.models import DAG
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
-# from plugins.operators.load_fact import LoadFactOperator
+from plugins.operators.load_fact import LoadFactOperator
 from airflow.utils.dates import days_ago
 
 args = {
@@ -69,13 +69,13 @@ also_run_this = BashOperator(
     dag=dag,
 )
 
-# load_songplays_table = LoadFactOperator(
-#     task_id='Load_songplays_fact_table',
-#     dag=dag,
-#     redshift_conn_id="redshift",
-#     table="songplays",
-#     sql_stmt="test"
-# )
+load_songplays_table = LoadFactOperator(
+    task_id='Load_songplays_fact_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    table="songplays",
+    sql_stmt="test"
+)
 # [END howto_operator_bash_template]
 also_run_this  >> run_this_last
 
