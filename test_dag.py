@@ -17,7 +17,7 @@
 # specific language governing permissions and limitations
 # under the License.
 import sys
-sys.path.insert(0, "/opt/airflow/dags/plugins")
+sys.path.insert(0, "/opt/airflow/dags")
 from builtins import range
 from datetime import timedelta
 
