@@ -27,7 +27,4 @@ class LoadFactOperator(BaseOperator):
 
     def execute(self, context):
         self.log.info(f'LoadFactOperator for {self.table}')
-        redshift = PostgresHook(postgres_conn_id=self.redshift_conn_id)
-        formatted_sql = f"INSERT INTO {self.table} ({self.sql_stmt})"
-        redshift.run(formatted_sql)
         self.log.info(f"Finished: {self.task_id}")

@@ -68,8 +68,16 @@ also_run_this = BashOperator(
     bash_command='echo "run_id={{ run_id }} | dag_run={{ dag_run }}"',
     dag=dag,
 )
+
+load_songplays_table = LoadFactOperator(
+    task_id='Load_songplays_fact_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    table="songplays",
+    sql_stmt="test"
+)
 # [END howto_operator_bash_template]
-also_run_this >> run_this_last
+also_run_this >> load_songplays_table >> run_this_last
 
 if __name__ == "__main__":
     dag.cli()
